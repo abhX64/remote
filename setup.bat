@@ -43,8 +43,10 @@ if not exist .env (
 echo.
 echo [3/3] Starting agent...
 echo ===========================================
-echo Press Ctrl+C anytime to stop the agent.
+echo  IMPORTANT: DO NOT CLOSE THIS WINDOW!
+echo  Keep this terminal open while using remote control.
+echo  If you close it, your PC will go offline.
 echo ===========================================
-npm start
+call node src/index.js
 
 pause
