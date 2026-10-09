@@ -1,0 +1,18 @@
+{
+  "name": "remote-pc-control-agent",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Agent that runs on the controlled PC",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "@nut-tree-fork/nut-js": "^4.2.6",
+    "dotenv": "^16.4.5",
+    "node-datachannel": "^0.11.0",
+    "node-screenshots": "^0.2.8",
+    "sharp": "^0.35.4",
+    "ws": "^8.18.0"
+  }
+}

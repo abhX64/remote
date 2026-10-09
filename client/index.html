@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Remote PC Control</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root { color-scheme: light dark; }
+    body { font-family: system-ui, sans-serif; max-width: 960px; margin: 2rem auto; padding: 0 1rem; }
+    h1 { font-size: 1.25rem; }
+    .row { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+    input { flex: 1; min-width: 160px; padding: 0.4rem; font-family: inherit; }
+    button { padding: 0.4rem 0.9rem; cursor: pointer; }
+    #status { font-size: 0.9rem; opacity: 0.75; margin-bottom: 1rem; }
+    #screenWrap {
+      background: #000;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+    }
+    #screenCanvas { max-width: 100%; display: block; cursor: crosshair; outline: none; }
+    #output {
+      background: #111;
+      color: #0f0;
+      font-family: ui-monospace, Consolas, monospace;
+      font-size: 0.8rem;
+      padding: 0.6rem;
+      height: 160px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      border-radius: 6px;
+    }
+    #cmdForm { display: flex; gap: 0.5rem; margin-top: 0.75rem; }
+    h2 { font-size: 1rem; margin: 1.5rem 0 0.5rem; }
+    #filesTable { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+    #filesTable td { padding: 0.3rem 0.4rem; border-bottom: 1px solid rgba(128, 128, 128, 0.25); }
+    #filesTable td:last-child { text-align: right; white-space: nowrap; }
+    #filesStatus { font-size: 0.85rem; opacity: 0.75; min-height: 1.2em; }
+  </style>
+</head>
+<body>
+  <h1>Remote PC Control</h1>
+
+  <div class="row">
+    <input id="deviceId" placeholder="Device ID" autocomplete="off" />
+    <input id="token" placeholder="Pairing token" type="password" autocomplete="off" />
+    <button id="connectBtn">Connect</button>
+  </div>
+
+  <div id="status">Not connected.</div>
+
+  <div id="screenWrap">
+    <canvas id="screenCanvas" tabindex="0" width="960" height="540"></canvas>
+  </div>
+
+  <div id="output"></div>
+
+  <form id="cmdForm">
+    <input id="cmdInput" placeholder="Shell command..." autocomplete="off" disabled />
+    <button type="submit">Run</button>
+  </form>
+
+  <h2>Files</h2>
+  <div class="row">
+    <input id="filesPath" placeholder="Path (e.g. C:\Users\You)" autocomplete="off" />
+    <button id="filesListBtn">List</button>
+  </div>
+  <table id="filesTable"><tbody></tbody></table>
+  <div class="row">
+    <input id="fileUploadInput" type="file" />
+    <button id="fileUploadBtn">Upload to current path</button>
+  </div>
+  <div id="filesStatus"></div>
+
+  <script src="src/view.js"></script>
+  <script src="src/input.js"></script>
+  <script src="src/files.js"></script>
+  <script src="src/app.js"></script>
+</body>
+</html>
